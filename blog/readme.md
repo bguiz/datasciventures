@@ -1,4 +1,4 @@
 
-# Blog
+# Adventures in Data Science
 
-The default [wintersmith](https://github.com/jnordberg/wintersmith) template
+This is a blog.
