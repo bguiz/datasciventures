@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Adventures in Data Science</title>
-    <atom:link href="http://bguiz.github.io/datasciventures/feed.xml" rel="self" type="application/rss+xml"></atom:link>
-    <link>http://bguiz.github.io/datasciventures</link>
+    <atom:link href="http://datasciventures.bguiz.com/feed.xml" rel="self" type="application/rss+xml"></atom:link>
+    <link>http://datasciventures.bguiz.com</link>
     <description>Superheroes hurtling through space counting the number of rocks passing them by</description>
     <pubDate>Tue, 04 Feb 2014 11:00:00 +1100</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
     <item>
       <title>Many Syllabi</title>
-      <link>http://bguiz.github.io/datasciventures/articles/001-many-syllabi/</link>
+      <link>http://datasciventures.bguiz.com/articles/001-many-syllabi/</link>
       <pubDate>Tue, 04 Feb 2014 11:00:00 +1100</pubDate>
-      <guid isPermaLink="true">http://bguiz.github.io/datasciventures/articles/001-many-syllabi/</guid>
+      <guid isPermaLink="true">http://datasciventures.bguiz.com/articles/001-many-syllabi/</guid>
       <author></author>
       <description>&lt;p&gt;&lt;strong&gt;&lt;em&gt;Being spoilt for choice is a good problem to have&lt;/em&gt;&lt;/strong&gt;… but it is a problem nonetheless. Data science is such a broad field, and it covers many different areas. There are many different resources out there which teach many different fields from programming to statistics to analytics. We shall list a few of the resources that we have come across, so far, and plan to use.&lt;/p&gt;
 &lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
@@ -29,9 +29,9 @@
     </item>
     <item>
       <title>First Post</title>
-      <link>http://bguiz.github.io/datasciventures/articles/000-first-post/</link>
+      <link>http://datasciventures.bguiz.com/articles/000-first-post/</link>
       <pubDate>Sat, 01 Feb 2014 11:00:00 +1100</pubDate>
-      <guid isPermaLink="true">http://bguiz.github.io/datasciventures/articles/000-first-post/</guid>
+      <guid isPermaLink="true">http://datasciventures.bguiz.com/articles/000-first-post/</guid>
       <author></author>
       <description>&lt;p&gt;&lt;strong&gt;&lt;em&gt;Adventures in Data Science!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;That seems like a great name for our blog right now. We are probably going to change it when we think of something a bit more exciting.&lt;/p&gt;
