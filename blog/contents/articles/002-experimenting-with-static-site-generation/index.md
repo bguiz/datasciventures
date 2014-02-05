@@ -1,12 +1,19 @@
 ---
-Title: Experimenting with Static Site Generation
+title: Experimenting with Static Site Generation
 author: bguiz
-date: 2014-02-01
+date: 2014-02-06
 template: article.jade
-tags: blog engine, static site generation, wintersmith
+tags:
+- blog engine
+- static site generation
+- wintersmith
 ---
 
-***Winter is coming!!!*** Indeed the most popular refrain from Game of Thrones applies to the blog too. My [main blog](http://blog.bguiz.com) is served by Tumblr. When setting up this new blog, I gravitated toward Tumblr yet again, but then I recalled my decision making process when setting up my main blog. It was:
+***Winter is coming!!!*** Indeed the most popular refrain from Game of Thrones applies to the blog too. 
+
+(Just a heads up: This post has almost absolutely nothing to do with data science!)
+
+My [main blog](http://blog.bguiz.com) is served by Tumblr. When setting up this new blog, I gravitated toward Tumblr yet again, but then I recalled my decision making process when setting up my main blog. It was:
 
 <span class="more"></span>
 
@@ -16,32 +23,32 @@ I was pretty happy with that decision, and Tumblr is a great platform. I see it 
 
 ## Wintersmith + Github pages
 
-It was pretty easy getting this set up going. There were just two pain points, which I figured out quite quickly.
-
-The basic idea here is that I want to create a subdomain on bguiz.com (my own domain) that serves up content from bguiz.github.io/datasciventures (github pages). Github pages is a free hosting service provded by github for your projects. It really is just a file server over HTTP, so only static sites are a go.
+The basic idea here is that I want to create a subdomain on `bguiz.com` (my own domain) that serves up content from `bguiz.github.io/datasciventures` (github pages). Github pages is a free hosting service provded by github for your projects. It really is just a file server over HTTP, so only static sites are a go.
 
 Enter static site generation. Tools like Jekyll and Wintersmith allow one to author all their content offline, using markdown, templates, and all the other bells and whistles that you would come across in a blogging engine. You then "build" a static version of this dynamic content, and upload these compiled assets to a static only server, and you get a blog. The readers of your blog will not even realise that it is a static site.
 
-### Solving the two pain points
+### Solving the pain points
 
-1. DNS and related configuration
+It was pretty easy getting this set up going. There were just two pain points, which are not too hard to work around. For the benefit of anyone else who would like to do this themselves, this should serve as a good reference:
+
+1) DNS and related configuration
 
 Do this first, because DNS configurations on your registar take a while to propagate (TTL). 
 
-In order to get `http://datasciventures.bguiz.com` to display exactly what is displayed at `http://bguiz.github.io/datasciventures` you will need to do the following:
+In order to get `http://datasciventures.bguiz.com` to display exactly what is displayed over at `http://bguiz.github.io/datasciventures` you will need to do the following:
 
-	- Modify your DNS registrar's Host Records:
+- Modify your DNS registrar's Host Records:
 
-			Host Name: datasciventures
-			IP Adress: bguiz.github.io.
-			Record Type: CNAME
-			TTL: 60 (or whatever else you prefer)
+		Host Name: datasciventures
+		IP Adress: bguiz.github.io.
+		Record Type: CNAME
+		TTL: 60 (or whatever else you prefer)
 
-	- Create a file named `CNAME` in the root of your project, within the `gh-pages` orphan branch
-		- If you have yet to create a `gh-pages` branch, follow [these instructions](https://help.github.com/articles/creating-project-pages-manually).
-		- Then create the `CNAME` file containing just one line, `datasciventures.bguiz.com`. Here is [the `CNAME` file for this site](https://github.com/bguiz/datasciventures/blob/gh-pages/CNAME).
+- Create a file named `CNAME` in the root of your project, within the `gh-pages` orphan branch
+	- If you have yet to create a `gh-pages` branch, follow [these instructions](https://help.github.com/articles/creating-project-pages-manually).
+	- Then create the `CNAME` file containing just one line, `datasciventures.bguiz.com`. As a sample, here is [the `CNAME` file for this site](https://github.com/bguiz/datasciventures/blob/gh-pages/CNAME).
 
-2. Absolute URLs
+2) Absolute URLs
 
 Push your `gh-pages` branch, and expect everything to be dandy? Well not quite! Turns out that Wintersmith assumes that the static assets that it compiles will always be hosted at the root URL of its domain. This a valid assumption for most use cases. However, in combination with `gh-pages`, it does not work that well.
 
@@ -49,3 +56,10 @@ There are probably a number of different ways in which this problem can be overc
 
 If anyone thinks of a better solution, please let me know!
 
+## How about Tumblr, now?
+
+Now that I have gone ahead and tinkered around with Wintersmith + Github Pages, and made the two work together, I have satisifed my geeky instincts. However, Amrita is not familiar with git or any of the above. Using Tumblr is going to be far more accessible for her.
+
+Perhaps I will write a script that syncs posts from Tumblr to Wintersmith or vice-versa. Until then, it is probably back to Tumblr for this blog.
+
+... Now back to data science!
