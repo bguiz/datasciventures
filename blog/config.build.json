@@ -1,0 +1,27 @@
+{
+  "output": "../../datasciventures-ghpages",
+  "locals": {
+    "url": "http://datasciventures.bguiz.com",
+    "name": "Adventures in Data Science",
+    "owner": "Brendan and Amrita",
+    "description": "Superheroes hurtling through space counting the number of rocks passing them by"
+  },
+  "plugins": [
+    "./plugins/paginator.coffee"
+  ],
+  "require": {
+    "moment": "moment",
+    "_": "underscore",
+    "typogr": "typogr"
+  },
+  "jade": {
+    "pretty": true
+  },
+  "markdown": {
+    "smartLists": true,
+    "smartypants": true
+  },
+  "paginator": {
+    "perPage": 7
+  }
+}
