@@ -17,6 +17,12 @@ block header
 block content
   article.article
     section.content!= typogr(page.html).typogrify()
+    p.tags
+      | #{ "Tagged: " }
+      - var count = 0, total = page.metadata.tags.length
+      each tagText in page.metadata.tags
+        span.tag
+          | #{ tagText + ((++count < total) ? ", " : "") }
 
 block prepend footer
   div.nav
