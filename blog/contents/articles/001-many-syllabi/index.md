@@ -3,7 +3,15 @@ title: Many Syllabi
 author: bguiz
 date: 2014-02-04
 template: article.jade
-tags: intro, syllabus, udacity, edx, google, ted
+tags: 
+- intro
+- syllabus
+- analytics
+- statistics
+- udacity
+- edx
+- google
+- ted
 ---
 
 ***Being spoilt for choice is a good problem to have***... but it is a problem nonetheless. Data science is such a broad field, and it covers many different areas. There are many different resources out there which teach many different fields from programming to statistics to analytics. We shall list a few of the resources that we have come across, so far, and plan to use.

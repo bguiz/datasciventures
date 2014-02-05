@@ -1,6 +1,6 @@
 {
   "locals": {
-    "url": "http://localhost:7331",
+    "url": "http://localhost:8080",
     "name": "Adventures in Data Science",
     "owner": "Brendan and Amrita",
     "description": "Superheroes hurtling through space counting the number of rocks passing them by"
