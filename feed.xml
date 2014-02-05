@@ -5,9 +5,53 @@
     <atom:link href="http://datasciventures.bguiz.com/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://datasciventures.bguiz.com</link>
     <description>Superheroes hurtling through space counting the number of rocks passing them by</description>
-    <pubDate>Tue, 04 Feb 2014 11:00:00 +1100</pubDate>
+    <pubDate>Thu, 06 Feb 2014 11:00:00 +1100</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Experimenting with Static Site Generation</title>
+      <link>http://datasciventures.bguiz.com/articles/002-experimenting-with-static-site-generation/</link>
+      <pubDate>Thu, 06 Feb 2014 11:00:00 +1100</pubDate>
+      <guid isPermaLink="true">http://datasciventures.bguiz.com/articles/002-experimenting-with-static-site-generation/</guid>
+      <author></author>
+      <description>&lt;p&gt;&lt;strong&gt;&lt;em&gt;Winter is coming!!!&lt;/em&gt;&lt;/strong&gt; Indeed the most popular refrain from Game of Thrones applies to the blog too. &lt;/p&gt;
+&lt;p&gt;(Just a heads up: This post has almost absolutely nothing to do with data science!)&lt;/p&gt;
+&lt;p&gt;My &lt;a href=&quot;http://blog.bguiz.com/&quot;&gt;main blog&lt;/a&gt; is served by Tumblr. When setting up this new blog, I gravitated toward Tumblr yet again, but then I recalled my decision making process when setting up my main blog. It was:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;I want to blog —&amp;gt; Wordpress! —&amp;gt; Admin interface too clunky and slow —&amp;gt; OK let’s try Tumblr —&amp;gt; But wait, how about using a static site generator, so I can write posts in Markdown —&amp;gt; Jekyll! —&amp;gt; Getting set up was too involved —&amp;gt; Back to Tumblr —&amp;gt; Oooh, Tumblr supports Markdown —&amp;gt; Tumblr it is!&lt;/p&gt;
+&lt;p&gt;I was pretty happy with that decision, and Tumblr is a great platform. I see it as the cross of Twitter and Wordpress - social network meets blogging. When setting up this new blog though, I thought back to that decision, and decided to give static site generation another go. I had heard of Ghost and Wintersmith, and decided to give Wintersmith a go because it was more general purpose (Ghost is targeted only towards blogging).&lt;/p&gt;
+&lt;h2 id=&quot;wintersmith-github-pages&quot;&gt;Wintersmith + Github pages&lt;/h2&gt;
+&lt;p&gt;The basic idea here is that I want to create a subdomain on &lt;code&gt;bguiz.com&lt;/code&gt; (my own domain) that serves up content from &lt;code&gt;bguiz.github.io/datasciventures&lt;/code&gt; (github pages). Github pages is a free hosting service provded by github for your projects. It really is just a file server over HTTP, so only static sites are a go.&lt;/p&gt;
+&lt;p&gt;Enter static site generation. Tools like Jekyll and Wintersmith allow one to author all their content offline, using markdown, templates, and all the other bells and whistles that you would come across in a blogging engine. You then “build” a static version of this dynamic content, and upload these compiled assets to a static only server, and you get a blog. The readers of your blog will not even realise that it is a static site.&lt;/p&gt;
+&lt;h3 id=&quot;solving-the-pain-points&quot;&gt;Solving the pain points&lt;/h3&gt;
+&lt;p&gt;It was pretty easy getting this set up going. There were just two pain points, which are not too hard to work around. For the benefit of anyone else who would like to do this themselves, this should serve as a good reference:&lt;/p&gt;
+&lt;p&gt;1) DNS and related configuration&lt;/p&gt;
+&lt;p&gt;Do this first, because DNS configurations on your registar take a while to propagate (TTL). &lt;/p&gt;
+&lt;p&gt;In order to get &lt;code&gt;http://datasciventures.bguiz.com&lt;/code&gt; to display exactly what is displayed over at &lt;code&gt;http://bguiz.github.io/datasciventures&lt;/code&gt; you will need to do the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Modify your DNS registrar’s Host Records:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  Host Name: datasciventures
+  IP Adress: bguiz.github.io.
+  Record Type: CNAME
+  TTL: 60 (or whatever else you prefer)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Create a file named &lt;code&gt;CNAME&lt;/code&gt; in the root of your project, within the &lt;code&gt;gh-pages&lt;/code&gt; orphan branch&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If you have yet to create a &lt;code&gt;gh-pages&lt;/code&gt; branch, follow &lt;a href=&quot;https://help.github.com/articles/creating-project-pages-manually&quot;&gt;these instructions&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Then create the &lt;code&gt;CNAME&lt;/code&gt; file containing just one line, &lt;code&gt;datasciventures.bguiz.com&lt;/code&gt;. As a sample, here is &lt;a href=&quot;https://github.com/bguiz/datasciventures/blob/gh-pages/CNAME&quot;&gt;the &lt;code&gt;CNAME&lt;/code&gt; file for this site&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2) Absolute URLs&lt;/p&gt;
+&lt;p&gt;Push your &lt;code&gt;gh-pages&lt;/code&gt; branch, and expect everything to be dandy? Well not quite! Turns out that Wintersmith assumes that the static assets that it compiles will always be hosted at the root URL of its domain. This a valid assumption for most use cases. However, in combination with &lt;code&gt;gh-pages&lt;/code&gt;, it does not work that well.&lt;/p&gt;
+&lt;p&gt;There are probably a number of different ways in which this problem can be overcome. I solved this in the most expedient way I could think of, which was to modify the jade templates such that the absolute URLs were prepended with the domain URL - &lt;a href=&quot;https://github.com/bguiz/datasciventures/commit/b4486734a53e35c7eccdc3cb21c2b208bc008b51&quot;&gt;diff&lt;/a&gt;. Of course this will only work if you tell Wintersmith what the domain URL should be - &lt;a href=&quot;https://github.com/bguiz/datasciventures/commit/a39b50579a4ba2bb0509b11646bd0bf50c7291e6&quot;&gt;diff&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If anyone thinks of a better solution, please let me know!&lt;/p&gt;
+&lt;h2 id=&quot;how-about-tumblr-now-&quot;&gt;How about Tumblr, now?&lt;/h2&gt;
+&lt;p&gt;Now that I have gone ahead and tinkered around with Wintersmith + Github Pages, and made the two work together, I have satisifed my geeky instincts. However, Amrita is not familiar with git or any of the above. Using Tumblr is going to be far more accessible for her.&lt;/p&gt;
+&lt;p&gt;Perhaps I will write a script that syncs posts from Tumblr to Wintersmith or vice-versa. Until then, it is probably back to Tumblr for this blog.&lt;/p&gt;
+&lt;p&gt;… Now back to data science!&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>Many Syllabi</title>
       <link>http://datasciventures.bguiz.com/articles/001-many-syllabi/</link>

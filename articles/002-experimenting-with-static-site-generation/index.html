@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>Experimenting with Static Site Generation - Adventures in Data Science
+    </title>
+    <link rel="alternate" href="http://datasciventures.bguiz.com/feed.xml" type="application/rss+xml" title="Superheroes hurtling through space counting the number of rocks passing them by">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
+    <link rel="stylesheet" href="http://datasciventures.bguiz.com/css/main.css">
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-37884921-2', 'bguiz.com');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body class="article-detail">
+    <header class="header">
+      <div class="content-wrap">
+        <h1>Experimenting with Static Site Generation</h1>
+        <p class="author">Written by <span class="author"><a href="mailto:datasciventures@bguiz.com">Brendan</a></span>
+        </p>
+      </div>
+    </header>
+    <div id="content">
+      <div class="content-wrap">
+        <article class="article">
+          <section class="content"><p><strong><em>Winter is coming!!!</em></strong> Indeed the most popular refrain from Game of Thrones applies to the blog&nbsp;too. </p>
+<p>(Just a heads up: This post has almost absolutely nothing to do with data&nbsp;science!)</p>
+<p>My <a href="http://blog.bguiz.com/">main blog</a> is served by Tumblr. When setting up this new blog, I gravitated toward Tumblr yet again, but then I recalled my decision making process when setting up my main blog. It&nbsp;was:</p>
+<p><span class="more"></span></p>
+<p>I want to blog —&gt; Wordpress! —&gt; Admin interface too clunky and slow —&gt; <span class="caps">OK</span> let’s try Tumblr —&gt; But wait, how about using a static site generator, so I can write posts in Markdown —&gt; Jekyll! —&gt; Getting set up was too involved —&gt; Back to Tumblr —&gt; Oooh, Tumblr supports Markdown —&gt; Tumblr it&nbsp;is!</p>
+<p>I was pretty happy with that decision, and Tumblr is a great platform. I see it as the cross of Twitter and Wordpress - social network meets blogging. When setting up this new blog though, I thought back to that decision, and decided to give static site generation another go. I had heard of Ghost and Wintersmith, and decided to give Wintersmith a go because it was more general purpose (Ghost is targeted only towards&nbsp;blogging).</p>
+<h2 id="wintersmith-github-pages">Wintersmith + Github&nbsp;pages</h2>
+<p>The basic idea here is that I want to create a subdomain on <code>bguiz.com</code> (my own domain) that serves up content from <code>bguiz.github.io/datasciventures</code> (github pages). Github pages is a free hosting service provded by github for your projects. It really is just a file server over <span class="caps">HTTP</span>, so only static sites are a&nbsp;go.</p>
+<p>Enter static site generation. Tools like Jekyll and Wintersmith allow one to author all their content offline, using markdown, templates, and all the other bells and whistles that you would come across in a blogging engine. You then “build” a static version of this dynamic content, and upload these compiled assets to a static only server, and you get a blog. The readers of your blog will not even realise that it is a static&nbsp;site.</p>
+<h3 id="solving-the-pain-points">Solving the pain&nbsp;points</h3>
+<p>It was pretty easy getting this set up going. There were just two pain points, which are not too hard to work around. For the benefit of anyone else who would like to do this themselves, this should serve as a good&nbsp;reference:</p>
+<p>1) <span class="caps">DNS</span> and related&nbsp;configuration</p>
+<p>Do this first, because <span class="caps">DNS</span> configurations on your registar take a while to propagate&nbsp;(TTL). </p>
+<p>In order to get <code>http://datasciventures.bguiz.com</code> to display exactly what is displayed over at <code>http://bguiz.github.io/datasciventures</code> you will need to do the&nbsp;following:</p>
+<ul>
+<li><p>Modify your <span class="caps">DNS</span> registrar’s Host&nbsp;Records:</p>
+<pre><code>  Host Name: datasciventures
+  IP Adress: bguiz.github.io.
+  Record Type: CNAME
+  TTL: 60 (or whatever else you prefer)
+</code></pre></li>
+<li><p>Create a file named <code>CNAME</code> in the root of your project, within the <code>gh-pages</code> orphan&nbsp;branch</p>
+<ul>
+<li>If you have yet to create a <code>gh-pages</code> branch, follow <a href="https://help.github.com/articles/creating-project-pages-manually">these instructions</a>.</li>
+<li>Then create the <code>CNAME</code> file containing just one line, <code>datasciventures.bguiz.com</code>. As a sample, here is <a href="https://github.com/bguiz/datasciventures/blob/gh-pages/CNAME">the <code>CNAME</code> file for this site</a>.</li>
+</ul>
+</li>
+</ul>
+<p>2) Absolute&nbsp;URLs</p>
+<p>Push your <code>gh-pages</code> branch, and expect everything to be dandy? Well not quite! Turns out that Wintersmith assumes that the static assets that it compiles will always be hosted at the root <span class="caps">URL</span> of its domain. This a valid assumption for most use cases. However, in combination with <code>gh-pages</code>, it does not work that&nbsp;well.</p>
+<p>There are probably a number of different ways in which this problem can be overcome. I solved this in the most expedient way I could think of, which was to modify the jade templates such that the absolute URLs were prepended with the domain <span class="caps">URL</span> - <a href="https://github.com/bguiz/datasciventures/commit/b4486734a53e35c7eccdc3cb21c2b208bc008b51">diff</a>. Of course this will only work if you tell Wintersmith what the domain <span class="caps">URL</span> should be - <a href="https://github.com/bguiz/datasciventures/commit/a39b50579a4ba2bb0509b11646bd0bf50c7291e6">diff</a>.</p>
+<p>If anyone thinks of a better solution, please let me&nbsp;know!</p>
+<h2 id="how-about-tumblr-now-">How about Tumblr,&nbsp;now?</h2>
+<p>Now that I have gone ahead and tinkered around with Wintersmith + Github Pages, and made the two work together, I have satisifed my geeky instincts. However, Amrita is not familiar with git or any of the above. Using Tumblr is going to be far more accessible for&nbsp;her.</p>
+<p>Perhaps I will write a script that syncs posts from Tumblr to Wintersmith or vice-versa. Until then, it is probably back to Tumblr for this&nbsp;blog.</p>
+<p>… Now back to data&nbsp;science!</p>
+</section>
+          <p class="tags">Tagged: <span class="tag">blog engine, </span><span class="tag">static site generation, </span><span class="tag">wintersmith</span>
+          </p>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="content-wrap">
+        <div class="nav"><a href="http://datasciventures.bguiz.com/">« Full blog</a></div>
+        <section class="about"><p>Adventures in Data Science is a blog by <a href="http://twitter.com/bguiz">Brendan</a> and Amrita. We will be using this to chronicle our journey in learning about this exciting new field.</p>
+<p>Brendan is a code geek, and Amrita is good at analysing data. Neither of us knows very much about the other’s field. That also makes us perfect for learning about data science together. It is also a sort of a 2014 new year’s resolution for us.</p>
+<p>Come tag along for the adventure with us!</p>
+
+        </section>
+        <section class="copy">
+          <p>&copy; 2014 Brendan and Amrita &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
+          </p>
+        </section>
+      </div>
+    </footer>
+  </body>
+</html>
