@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Adventures in Data Science</title>
+    <atom:link href="http://localhost:7331/feed.xml" rel="self" type="application/rss+xml"></atom:link>
+    <link>http://localhost:7331</link>
+    <description>Superheroes hurtling through space counting the number of rocks passing them by</description>
+    <pubDate>Tue, 04 Feb 2014 11:00:00 +1100</pubDate>
+    <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
+    <language>en</language>
+    <item>
+      <title>Many Syllabi</title>
+      <link>http://localhost:7331/articles/001-many-syllabi/</link>
+      <pubDate>Tue, 04 Feb 2014 11:00:00 +1100</pubDate>
+      <guid isPermaLink="true">http://localhost:7331/articles/001-many-syllabi/</guid>
+      <author></author>
+      <description>&lt;p&gt;&lt;strong&gt;&lt;em&gt;Being spoilt for choice is a good problem to have&lt;/em&gt;&lt;/strong&gt;… but it is a problem nonetheless. Data science is such a broad field, and it covers many different areas. There are many different resources out there which teach many different fields from programming to statistics to analytics. We shall list a few of the resources that we have come across, so far, and plan to use.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&quot;the-list&quot;&gt;The list&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.udacity.com/courses#!/Data%20Science&quot;&gt;Udacity’s Data Science track&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.edx.org/course-list/allschools/statistics-data-analysis/allcourses&quot;&gt;edX’s Statistics and Data Analysis track&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://analyticsacademy.withgoogle.com/course&quot;&gt;Google’s Analytics Academy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.ted.com/topics/statistics&quot;&gt;TED talks statistics playlist&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That is a whole lot of content to get through right there; and that it is just the tip of the iceberg!&lt;/p&gt;
+&lt;p&gt;Time to get cracking!&lt;/p&gt;
+</description>
+    </item>
+    <item>
+      <title>First Post</title>
+      <link>http://localhost:7331/articles/000-first-post/</link>
+      <pubDate>Sat, 01 Feb 2014 11:00:00 +1100</pubDate>
+      <guid isPermaLink="true">http://localhost:7331/articles/000-first-post/</guid>
+      <author></author>
+      <description>&lt;p&gt;&lt;strong&gt;&lt;em&gt;Adventures in Data Science!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;That seems like a great name for our blog right now. We are probably going to change it when we think of something a bit more exciting.&lt;/p&gt;
+&lt;h2 id=&quot;who-we-are&quot;&gt;Who We Are&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/bguiz&quot;&gt;Brendan&lt;/a&gt; is a writer of code, and Amrita is a miner of consumer insights. Neither of us have more than a cursory understanding of what the other does at their nine-to-five. This field, data science, lies at the intersection of what the two of us do, and we figure it is a great opportunity to learn something together, and leverage each other’s strengths.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&quot;blogging&quot;&gt;Blogging&lt;/h2&gt;
+&lt;p&gt;We plan to keep ourselves honest in our efforts by writing about the things that we learn along the way. We will not be posting a step-by-step detailed syllabus of everything we have learnt; rather, we will be doing a highlights reel. We will sprinkle in an interesting video here and there as we go along too.&lt;/p&gt;
+&lt;h2 id=&quot;some-inspiration&quot;&gt;Some Inspiration&lt;/h2&gt;
+&lt;p&gt;Why did we decide to do this - what actually triggered it? Well, for us, we discovered that we were both interested in data science when we watched TED talks together. Hans Rosling’s talks are always very captivating, and really do exemplify the power of being able to reason about and visualise large, complex data sets.&lt;/p&gt;
+&lt;p&gt;In that spirit, we are kicking this blog off with a TED talk given by a statistician, &lt;a href=&quot;http://www.ted.com/talks/peter_donnelly_shows_how_stats_fool_juries.html&quot;&gt;Peter Donnelly, on why statistics is important&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;bon-voyage&quot;&gt;Bon Voyage&lt;/h2&gt;
+&lt;p&gt;… and it begins!&lt;/p&gt;
+</description>
+    </item>
+  </channel>
+</rss>
