@@ -3,7 +3,9 @@ title: First Post
 author: bguiz
 date: 2014-02-01
 template: article.jade
-tags: intro
+tags:
+- intro
+- data science
 ---
 
 ***Adventures in Data Science!***
