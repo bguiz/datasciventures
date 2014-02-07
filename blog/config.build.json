@@ -1,7 +1,7 @@
 {
-  "output": "../../datasciventures-ghpages",
+  "output": "../../datasciventures-ghpages/blog",
   "locals": {
-    "url": "http://datasciventures.bguiz.com",
+    "url": "http://datasciventures.bguiz.com/blog",
     "name": "Adventures in Data Science",
     "owner": "Brendan and Amrita",
     "description": "Superheroes hurtling through space counting the number of rocks passing them by"
